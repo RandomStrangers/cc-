@@ -1,19 +1,29 @@
 name: Notify success
-description: Sends a notification that a workflow has finished
+description: Sends a notification that a workflow has finished.
 inputs:
-  DESTINATION_URL:
-    description: 'Webhook notification URL'
+  BOT_USERNAME:
+    description: 'Username to use for the discord bot message'
+    default: 'CC BuildBot'
+    required: false
     type: string
-  WORKFLOW_NAME:
-    description: 'Workflow name'
+  BOT_AVATAR:
+    description: 'URL to use for the avatar of the discord bot message'
+    default: 'https://raw.githubusercontent.com/RandomStrangers/ClassiCube-Tophat/master/misc/CCicon.png'
+    required: false
+    type: string
+  NOTIFY_MESSAGE:
+    description: 'Notification message to send'
+    required: true
+    type: string
+  WEBHOOK_URL:
+    description: 'Discord webhook URL'
     required: true
     type: string
 
 runs:
   using: "composite"
   steps:
-    - name: Notify failure
-      if: ${{ inputs.DESTINATION_URL != '' }}
+    - name: Notify Success
       shell: sh
       run: |
-        curl ${{ inputs.DESTINATION_URL }}/${{ inputs.WORKFLOW_NAME }}/${{ github.sha }}
+        curl ${{ inputs.WEBHOOK_URL }} -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data "{\"username\": \"${{ inputs.BOT_USERNAME }}\", \"avatar_url\": \"${{ inputs.BOT_AVATAR }}\", \"content\": \"${{ inputs.NOTIFY_MESSAGE }}\" }"

@@ -34,7 +34,7 @@ void Platform_Log(const char* msg, int len) {
 
 	Mem_Copy(tmp, msg, len); tmp[len] = '\0';
 	/* log using logchat */
-	__android_log_write(ANDROID_LOG_DEBUG, "ClassiCube", tmp);
+	__android_log_write(ANDROID_LOG_DEBUG, "ClassiCube0", tmp);
 }
 
 
@@ -258,7 +258,7 @@ CC_API jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	VM_Ptr = vm;
 	JavaGetCurrentEnv(env);
 
-	klass     = (*env)->FindClass(env, "com/classicube/MainActivity");
+	klass     = (*env)->FindClass(env, "com/classicube0/MainActivity");
 	App_Class = (*env)->NewGlobalRef(env, klass);
 	JavaRegisterNatives(env, methods);
 	return JNI_VERSION_1_4;

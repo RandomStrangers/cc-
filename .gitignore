@@ -9,7 +9,9 @@
 # Visual studio files
 *.VC.db
 *.VC.VC.opendb
-
+!src/ClassiCube.vcxproj
+!src/ClassiCube.vcxproj.filters
+!src/ClassiCube.sln
 # Android build results
 android/.cxx/
 android/.idea/
