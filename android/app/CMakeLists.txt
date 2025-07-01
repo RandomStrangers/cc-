@@ -21,7 +21,7 @@ set(${CMAKE_C_FLAGS}, "${CMAKE_C_FLAGS}")
 # now build app's shared lib
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -Wall -Werror")
 
-add_library(classicube SHARED
+add_library(classicube0 SHARED
         ../../src/main.c
         ../../src/IsometricDrawer.c
         ../../src/Builder.c
