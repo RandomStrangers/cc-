@@ -1,9 +1,9 @@
 {
-    "id": "net.classicube.flatpak.client",
+    "id": "net.classicube0.flatpak.client",
     "runtime": "org.gnome.Platform",
     "runtime-version": "48",
     "sdk": "org.gnome.Sdk",
-    "command": "ClassiCubeLauncher",
+    "command": "ClassiCube0Launcher",
     "finish-args": [
         "--socket=wayland",
         "--socket=fallback-x11",
@@ -92,38 +92,38 @@
             ]
         },
         {
-            "name": "ClassiCubeAssets",
+            "name": "ClassiCube0Assets",
             "buildsystem": "simple",
             "build-commands": [
-                "install -Dm644 classicube-texpack.zip ${FLATPAK_DEST}/share/classicube-texpack.zip",
-                "install -Dm644 classicube-audio.zip ${FLATPAK_DEST}/share/classicube-audio.zip"
+                "install -Dm644 classicube0-texpack.zip ${FLATPAK_DEST}/share/classicube0-texpack.zip",
+                "install -Dm644 classicube0-audio.zip ${FLATPAK_DEST}/share/classicube0-audio.zip"
             ],
             "sources": [
                 {
                     "type": "file",
-                    "dest-filename": "classicube-texpack.zip",
+                    "dest-filename": "classicube0-texpack.zip",
                     "url": "https://classicube.net/static/default.zip",
                     "sha256": "55eac12a9727d209b42694d07dfdca8d50349779ab77ffc11a31d2cb66b45635"
                 },
                 {
                     "type": "file",
-                    "dest-filename": "classicube-audio.zip",
+                    "dest-filename": "classicube0-audio.zip",
                     "url": "https://classicube.net/static/audio.zip",
                     "sha256": "13562a712d1cb1de3f36dd93a03245a377f201e7934d19c17de09202b410e04b"
                 }
             ]
         },
         {
-            "name": "ClassiCube",
+            "name": "ClassiCube0",
             "buildsystem": "simple",
             "build-commands": [
-                "gcc -fno-math-errno src/*.c -o src/ClassiCube -rdynamic -lpthread -lGL -DCC_WIN_BACKEND=CC_WIN_BACKEND_SDL3 -DCC_GFX_BACKEND=CC_GFX_BACKEND_GL2 -DCC_BUILD_FLATPAK -L /app/lib -lSDL3",
-                "install -Dm755 src/ClassiCube -t ${FLATPAK_DEST}/bin",
-                "install -Dm755 misc/flatpak/ClassiCubeLauncher -t ${FLATPAK_DEST}/bin",
+                "gcc -fno-math-errno src/*.c -o src/ClassiCube0 -rdynamic -lpthread -lGL -DCC_WIN_BACKEND=CC_WIN_BACKEND_SDL3 -DCC_GFX_BACKEND=CC_GFX_BACKEND_GL2 -DCC_BUILD_FLATPAK -L /app/lib -lSDL3",
+                "install -Dm755 src/ClassiCube0 -t ${FLATPAK_DEST}/bin",
+                "install -Dm755 misc/flatpak/ClassiCube0Launcher -t ${FLATPAK_DEST}/bin",
                 "install -Dm755 misc/flatpak/zenity-wrapper ${FLATPAK_DEST}/bin/zenity",
-                "install -Dm644 misc/flatpak/net.classicube.flatpak.client.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/net.classicube.flatpak.client.svg",
-                "install -Dm644 misc/flatpak/net.classicube.flatpak.client.desktop ${FLATPAK_DEST}/share/applications/net.classicube.flatpak.client.desktop",
-                "install -Dm644 misc/flatpak/net.classicube.flatpak.client.metainfo.xml ${FLATPAK_DEST}/share/metainfo/net.classicube.flatpak.client.metainfo.xml"
+                "install -Dm644 misc/flatpak/net.classicube0.flatpak.client.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/net.classicube0.flatpak.client.svg",
+                "install -Dm644 misc/flatpak/net.classicube0.flatpak.client.desktop ${FLATPAK_DEST}/share/applications/net.classicube0.flatpak.client.desktop",
+                "install -Dm644 misc/flatpak/net.classicube0.flatpak.client.metainfo.xml ${FLATPAK_DEST}/share/metainfo/net.classicube0.flatpak.client.metainfo.xml"
             ],
             "sources": [
                 {

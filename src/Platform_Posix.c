@@ -40,9 +40,9 @@ const cc_result ReturnCode_SocketDropped    = EPIPE;
 #define SUPPORTS_GETADDRINFO 1
 
 #if defined CC_BUILD_ANDROID
-const char* Platform_AppNameSuffix = " android alpha";
+const char* Platform_AppNameSuffix = " (android)";
 #elif defined CC_BUILD_IOS
-const char* Platform_AppNameSuffix = " iOS alpha";
+const char* Platform_AppNameSuffix = " (iOS)";
 #else
 const char* Platform_AppNameSuffix = "";
 #endif
@@ -1122,7 +1122,7 @@ static cc_result Process_RawGetExePath(char* path, int* len) {
 }
 #elif defined CC_BUILD_IRIX || defined CC_BUILD_HPUX
 static cc_result Process_RawGetExePath(char* path, int* len) {
-	static cc_string file = String_FromConst("ClassiCube");
+	static cc_string file = String_FromConst("ClassiCube0");
 
 	/* TODO properly get exe path */
 	/* Maybe use PIOCOPENM from https://nixdoc.net/man-pages/IRIX/man4/proc.4.html */
@@ -1161,67 +1161,77 @@ cc_bool Updater_Clean(void) { return true; }
 
 #if defined CC_BUILD_RPI
 	#if __aarch64__
-	const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL ES", "cc-rpi64" } } };
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+	//const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL ES", "cc-rpi64" } } };
 	#else
-	const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL ES", "ClassiCube.rpi" } } };
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+	//const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL ES", "ClassiCube.rpi" } } };
 	#endif
 #elif defined CC_BUILD_LINUX
 	#if __x86_64__
-	const struct UpdaterInfo Updater_Info = {
+	/*const struct UpdaterInfo Updater_Info = {
 		"&eModernGL is recommended for newer machines (2015 or later)", 2,
 		{
 			{ "ModernGL", "cc-nix64-gl2" },
 			{ "OpenGL",   "ClassiCube" }
 		}
-	};
+	};*/
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#elif __i386__
-	const struct UpdaterInfo Updater_Info = {
+	/*const struct UpdaterInfo Updater_Info = {
 		"&eModernGL is recommended for newer machines (2015 or later)", 2,
 		{
 			{ "ModernGL", "cc-nix32-gl2" },
 			{ "OpenGL",   "ClassiCube.32" }
 		}
-	};
+	};*/
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#else
 	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#endif
 #elif defined CC_BUILD_MACOS
 	#if __x86_64__
-	const struct UpdaterInfo Updater_Info = {
+	/*const struct UpdaterInfo Updater_Info = {
 		"&eModernGL is recommended for newer machines (2015 or later)", 2,
 		{
 			{ "ModernGL", "cc-osx64-gl2" },
 			{ "OpenGL",   "ClassiCube.64.osx" }
 		}
-	};
+	};*/
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#elif __i386__
-	const struct UpdaterInfo Updater_Info = {
+	/*const struct UpdaterInfo Updater_Info = {
 		"&eModernGL is recommended for newer machines (2015 or later)", 2,
 		{
 			{ "ModernGL", "cc-osx32-gl2" },
 			{ "OpenGL",   "ClassiCube.osx" }
 		}
-	};
+	};*/
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#else
 	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#endif
 #elif defined CC_BUILD_HAIKU
 	#if __x86_64__
-	const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-haiku-64" } } };
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+	//const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-haiku-64" } } };
 	#else
 	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#endif
 #elif defined CC_BUILD_FREEBSD
 	#if __x86_64__
-	const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-freebsd-64" } } };
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+	//const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-freebsd-64" } } };
 	#elif __i386__
-	const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-freebsd-32" } } };
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+	//const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-freebsd-32" } } };
 	#else
 	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#endif
 #elif defined CC_BUILD_NETBSD
 	#if __x86_64__
-	const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-netbsd-64" } } };
+	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+	//const struct UpdaterInfo Updater_Info = { "", 1, { { "OpenGL", "cc-netbsd-64" } } };
 	#else
 	const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 	#endif

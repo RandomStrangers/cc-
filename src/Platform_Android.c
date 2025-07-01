@@ -251,7 +251,7 @@ static const JNINativeMethod methods[] = {
 };
 
 /* This method is automatically called by the Java VM when the */
-/*  activity java class calls 'System.loadLibrary("classicube");' */
+/*  activity java class calls 'System.loadLibrary("classicube0");' */
 CC_API jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	jclass klass;
 	JNIEnv* env;

@@ -1,4 +1,4 @@
-name: Build latest (Android2)
+name: Build latest (Android)
 # trigger via either push to selected branches or on manual run
 on:
   push:
@@ -95,17 +95,17 @@ jobs:
           cp cc0-signed.apk $ROOT_DIR/src/cc0.apk
 
           # old v1 only version (doesn't work properly now)
-          #cp cc-unsigned.apk cc-signed.apk
-          #jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore debug.keystore -storepass android -keypass android cc-signed.apk androiddebugkey
+          #cp cc0-unsigned.apk cc0-signed.apk
+          #jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore debug.keystore -storepass android -keypass android cc0-signed.apk androiddebugkey
           # jarsigner -verbose
           # create aligned .apk file
-          #$TOOLS_ROOT/zipalign -f 4 cc-signed.apk $ROOT_DIR/src/cc.apk
+          #$TOOLS_ROOT/zipalign -f 4 cc0-signed.apk $ROOT_DIR/src/cc0.apk
 
 
       - uses: ./.github/actions/notify_failure
         if: ${{ always() && steps.compile.outcome == 'failure' }}
         with:
-          NOTIFY_MESSAGE: 'Failed to compile android build'
+          NOTIFY_MESSAGE: 'Failed to compile ClassiCube0 Android build! <@999409543001931788>'
           WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'
           
           
@@ -113,11 +113,11 @@ jobs:
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
           SOURCE_FILE: 'src/cc0.apk'
-          DEST_NAME: 'ClassiCUbe.apk'
+          DEST_NAME: 'ClassiCube0.apk'
           
 
       - uses: ./.github/actions/notify_success
         if: ${{ always() && steps.compile.outcome == 'success' }}
         with:
-          NOTIFY_MESSAGE: 'Successfully compiled ClassiCube Android build.'
+          NOTIFY_MESSAGE: 'Successfully compiled ClassiCube0 Android build.'
           WEBHOOK_URL: '${{ secrets.WEBHOOK_URL }}'

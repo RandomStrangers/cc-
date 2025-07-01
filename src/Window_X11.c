@@ -423,8 +423,8 @@ static void DoCreateWindow(int width, int height, int _2d) {
 	/* So right name appears in e.g. Ubuntu Unity launchbar */
 	XClassHint hint = { 0 };
 	#ifdef CC_BUILD_FLATPAK
-		hint.res_name   = (char*)"net.classicube.flatpak.client";
-		hint.res_class  = (char*)"net.classicube.flatpak.client";
+		hint.res_name   = (char*)"net.classicube0.flatpak.client";
+		hint.res_class  = (char*)"net.classicube0.flatpak.client";
 	#else
 		hint.res_name   = (char*)GAME_APP_TITLE;
 		hint.res_class  = (char*)GAME_APP_TITLE;

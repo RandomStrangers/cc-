@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <component type="desktop-application">
   <id>net.classicube.flatpak.client</id>
-  <name>ClassiCube</name>
+  <name>ClassiCube0</name>
   <summary>Sandbox building-block game</summary>
-  <developer id="net.classicube">
-    <name>The ClassiCube Project</name>
+  <developer id="net.classicube0">
+    <name>The ClassiCube0 Project</name>
   </developer>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>BSD-3-Clause</project_license>
   <description>
-    <p>ClassiCube brings you back to the days of 2009 where one block game ruled them all, it includes such features as:</p>
+    <p>ClassiCube0 brings you back to the days of 2009 where one block game ruled them all, it includes such features as:</p>
     <ul>
       <li>Loads of blocks and items to choose from</li>
       <li>Chatting with other players</li>
@@ -126,8 +126,8 @@
     <content_attribute id="violence-cartoon">moderate</content_attribute>
     <content_attribute id="social-chat">intense</content_attribute>
   </content_rating>
-  <launchable type="desktop-id">net.classicube.flatpak.client.desktop</launchable>
+  <launchable type="desktop-id">net.classicube0.flatpak.client.desktop</launchable>
   <provides>
-    <binary>ClassiCube</binary>
+    <binary>ClassiCube0</binary>
   </provides>
 </component>

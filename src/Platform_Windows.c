@@ -842,30 +842,34 @@ cc_result Process_StartOpen(const cc_string* args) {
 /*########################################################################################################################*
 *--------------------------------------------------------Updater----------------------------------------------------------*
 *#########################################################################################################################*/
-#define UPDATE_TMP TEXT("CC_prev.exe")
+#define UPDATE_TMP TEXT("CC0_prev.exe")
 #define UPDATE_SRC TEXT(UPDATE_FILE)
 cc_bool Updater_Supported = true;
 
 #if defined _M_IX86
-const struct UpdaterInfo Updater_Info = {
+const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+/*const struct UpdaterInfo Updater_Info = {
 	"&eDirect3D 9 is recommended", 2,
 	{
 		{ "Direct3D9", "ClassiCube.exe" },
 		{ "OpenGL",    "ClassiCube.opengl.exe" }
 	}
-};
+};*/
 #elif defined _M_X64
-const struct UpdaterInfo Updater_Info = {
+/*const struct UpdaterInfo Updater_Info = {
 	"&eDirect3D 9 is recommended", 2,
 	{
 		{ "Direct3D9", "ClassiCube.64.exe" },
 		{ "OpenGL",    "ClassiCube.64-opengl.exe" }
 	}
-};
+};*/
+const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 #elif defined _M_ARM64
-const struct UpdaterInfo Updater_Info = { "", 1, { { "Direct3D11", "cc-arm64-d3d11.exe" } } };
+const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+//const struct UpdaterInfo Updater_Info = { "", 1, { { "Direct3D11", "cc-arm64-d3d11.exe" } } };
 #elif defined _M_ARM
-const struct UpdaterInfo Updater_Info = { "", 1, { { "Direct3D11", "cc-arm32-d3d11.exe" } } };
+const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
+//const struct UpdaterInfo Updater_Info = { "", 1, { { "Direct3D11", "cc-arm32-d3d11.exe" } } };
 #else
 const struct UpdaterInfo Updater_Info = { "&eCompile latest source code to update", 0 };
 #endif
@@ -882,7 +886,7 @@ cc_result Updater_Start(const char** action) {
 	*action = "Getting executable path";
 	if ((res = Process_RawGetExePath(&path, &len))) return res;
 
-	*action = "Moving executable to CC_prev.exe"; 
+	*action = "Moving executable to CC0_prev.exe"; 
 	if (!path.uni[0]) return ERR_NOT_SUPPORTED; /* MoveFileA returns ERROR_ACCESS_DENIED on Win 9x anyways */
 	if (!MoveFileExW(path.uni, UPDATE_TMP, MOVEFILE_REPLACE_EXISTING)) return GetLastError();
 

@@ -3,7 +3,7 @@ description: Sends a notification that compiling a build has failed
 inputs:
   BOT_USERNAME: 
     description: 'Username to use for the discord bot message'
-    default: 'CC BuildBot'
+    default: 'ClassiCube0 BuildBot'
     required: false
     type: string
   BOT_AVATAR: 
