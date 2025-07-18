@@ -23,9 +23,9 @@
 		-->
 		<identifiers
 			system			="PLAYSTATION"
-			volume			="CLASSICUBE_PS1"
-			volume_set		="CLASSICUBE_PS1"
-			publisher		="CLASSICUBE"
+			volume			="CLASSICUBE0_PS1"
+			volume_set		="CLASSICUBE0_PS1"
+			publisher		="CLASSICUBE0"
 			data_preparer	="PSN00BSDK"
 			application		="PLAYSTATION"
 			copyright		="README.TXT;1"
@@ -58,7 +58,7 @@
 		-->
 		<directory_tree>
 			<file name="SYSTEM.CNF"		type="data" source="system.cnf" />
-			<file name="CCUBEPS1.EXE"	type="data" source="../../ClassiCube-ps1.exe" />
+			<file name="0CUBEPS1.EXE"	type="data" source="../../ClassiCube0-ps1.exe" />
 
 			<dir name="audio">
 				<file name="DCLOTH1.SND"  type="data" source="sounds/dig_cloth1.snd" />
@@ -122,7 +122,7 @@
 				<file name="SWOOD4.SND"   type="data" source="sounds/step_wood4.snd" />
 			</dir>
 			<dir name="texpacks">
-				<file name="default.zip" type="data" source="classicube.zip" />
+				<file name="default.zip" type="data" source="classicube0.zip" />
 			</dir>
 			<dummy sectors="1024"/>
 		</directory_tree>

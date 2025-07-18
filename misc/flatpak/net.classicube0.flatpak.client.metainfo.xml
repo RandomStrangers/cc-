@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <component type="desktop-application">
-  <id>net.classicube.flatpak.client</id>
+  <id>net.classicube0.flatpak.client</id>
   <name>ClassiCube0</name>
   <summary>Sandbox building-block game</summary>
   <developer id="net.classicube0">

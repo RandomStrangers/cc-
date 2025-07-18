@@ -17,16 +17,10 @@
 #define _UNICODE
 #endif
 #include <windows.h>
-/*
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <shellapi.h>
-#include <wincrypt.h>
-*/
-/* Compatibility versions so compiling works on older Windows SDKs */
-#include "../misc/windows/min-winsock2.h"
-#include "../misc/windows/min-shellapi.h"
-#include "../misc/windows/min-wincrypt.h"
+/* Use own minimal versions of WinAPI headers so that compiling works on older Windows SDKs */
+#include "../misc/windows/min-winsock2.h" /* #include <winsock2.h> #include <ws2tcpip.h> */
+#include "../misc/windows/min-shellapi.h" /* #include <shellapi.h> */
+#include "../misc/windows/min-wincrypt.h" /* #include <wincrypt.h> */
 #include "../misc/windows/min-kernel32.h"
 
 static HANDLE heap;
@@ -886,7 +880,7 @@ cc_result Updater_Start(const char** action) {
 	*action = "Getting executable path";
 	if ((res = Process_RawGetExePath(&path, &len))) return res;
 
-	*action = "Moving executable to CC0_prev.exe"; 
+	*action = "Moving executable to CC0_prev.exe";
 	if (!path.uni[0]) return ERR_NOT_SUPPORTED; /* MoveFileA returns ERROR_ACCESS_DENIED on Win 9x anyways */
 	if (!MoveFileExW(path.uni, UPDATE_TMP, MOVEFILE_REPLACE_EXISTING)) return GetLastError();
 

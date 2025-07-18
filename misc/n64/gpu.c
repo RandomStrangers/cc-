@@ -7,7 +7,7 @@
 
 // This is a severely cutdown version of libdragon's OpenGL implementation
 #define VTX_SHIFT 5
-#define TEX_SHIFT 8
+#define TEX_SHIFT 10
 
 static uint32_t gpup_id;
 //DEFINE_RSP_UCODE(rsp_gpu);
@@ -41,8 +41,6 @@ enum {
 };
 
 typedef struct {
-	int16_t  mvp_matrix_i[4][4];
-    uint16_t mvp_matrix_f[4][4];
     int16_t vp_scale[4];
     int16_t vp_offset[4];
     uint16_t tex_size[2];
@@ -95,7 +93,7 @@ static int   gpu_stride;
 #define GPU_ATTR_TEX   (1 <<  9)
 #define GPU_ATTR_SHADE (1 << 10)
 #define GPU_ATTR_EDGE  (1 << 11)
-static bool gpu_attr_z, gpu_attr_tex;
+static uint8_t gpu_attr_z, gpu_attr_tex;
 
 static void gpuUpdateFormat(void)
 {
@@ -110,6 +108,11 @@ static void gpuUpdateFormat(void)
 static void gpuSetTexSize(uint16_t width, uint16_t height)
 {
     gpu_set_word(offsetof(gpu_state, tex_size[0]), (width << 16) | height);
+}
+
+static void gpuSetTexOffset(uint16_t width, uint16_t height)
+{
+    gpu_set_word(offsetof(gpu_state, tex_offset[0]), (width << 16) | height);
 }
 
 

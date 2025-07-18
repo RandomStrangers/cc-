@@ -7,7 +7,7 @@ endif
 # Configurable options
 #---------------------------------------------------------------------------------
 # Name of the final output
-TARGET 		= ClassiCube-wii
+TARGET 		= ClassiCube0-wii
 # List of directories containing source code
 SOURCE_DIRS	= src src/gcwii third_party/bearssl/src
 # List of directories containing more header files

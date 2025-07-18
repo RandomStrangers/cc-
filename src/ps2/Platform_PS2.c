@@ -141,7 +141,7 @@ void Process_Abort2(cc_result result, const char* raw_msg) {
 /*########################################################################################################################*
 *-----------------------------------------------------Directory/File------------------------------------------------------*
 *#########################################################################################################################*/
-static const cc_string root_path = String_FromConst("mass:/ClassiCube/");
+static const cc_string root_path = String_FromConst("mass:/ClassiCube0/");
 
 void Platform_EncodePath(cc_filepath* dst, const cc_string* path) {
 	char* str = dst->buffer;
@@ -719,7 +719,7 @@ void Platform_Init(void) {
 	Networking_LoadIOPModules();
 	Networking_Setup();
 	
-	cc_filepath* root = FILEPATH_RAW("mass:/ClassiCube");
+	cc_filepath* root = FILEPATH_RAW("mass:/ClassiCube0");
 	int res = Directory_Create(root);
 	Platform_Log1("ROOT DIRECTORY CREATE %i", &res);
 }

@@ -7,7 +7,7 @@ endif
 # Configurable options
 #---------------------------------------------------------------------------------
 # Name of the final output
-TARGET 		= ClassiCube-switch
+TARGET 		= ClassiCube0-switch
 # List of directories containing source code
 SOURCE_DIRS	= src src/switch third_party/bearssl/src
 # List of directories containing more header files
@@ -15,7 +15,7 @@ INCLUDES	= -Ithird_party/bearssl/inc
 # Directory where object files are placed
 BUILD_DIR	= build/switch
 
-APP_TITLE 	= ClassiCube
+APP_TITLE 	= ClassiCube0
 APP_AUTHOR 	= ClassiCube team
 APP_ICON    = misc/switch/icon.jpg
 APP_VERSION	= 1.3.7

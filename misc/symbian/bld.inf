@@ -3,6 +3,7 @@ DEFAULT
 
 PRJ_MMPFILES
 gnumakefile Icons_scalable_dc.mk
-ClassiCube_sym3.mmp
-ClassiCube_s60v5.mmp
-ClassiCube_s60v3.mmp
+bearssl.mmp
+ClassiCube0_sym3.mmp
+ClassiCube0_s60v5.mmp
+ClassiCube0_s60v3.mmp

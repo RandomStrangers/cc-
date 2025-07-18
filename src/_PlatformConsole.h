@@ -54,7 +54,7 @@ void Directory_GetCachePath(cc_string* path) { }
 *-----------------------------------------------------Process/Module------------------------------------------------------*
 *#########################################################################################################################*/
 cc_result Process_StartGame2(const cc_string* args, int numArgs) {
-	Platform_LogConst("START CLASSICUBE");
+	Platform_LogConst("START CLASSICUBE0");
 	return SetGameArgs(args, numArgs);
 }
 

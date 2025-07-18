@@ -3,7 +3,7 @@ CC=m68k-amigaos-gcc
 CXX=m68k-amigaos-g++
 
 CFLAGS		:=-O1 -fno-math-errno -DPLAT_AMIGA -DCC_BUILD_NOFPU
-TARGET		:= ClassiCube-68k
+TARGET		:= ClassiCube0-68k
 BUILD_DIR 	:= build-amiga-68k
 SOURCE_DIR	:= src
 LDFLAGS		:=

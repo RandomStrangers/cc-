@@ -127,7 +127,8 @@ static void ProcessTouchInput(int port, int id, const SceTouchPanelInfo* panel) 
 
 void Window_ProcessEvents(float delta) {
 	ProcessTouchInput(SCE_TOUCH_PORT_FRONT, 0, &frontPanel);
-	ProcessTouchInput(SCE_TOUCH_PORT_BACK,  1, &backPanel);
+	//ProcessTouchInput(SCE_TOUCH_PORT_BACK,  1, &backPanel);
+	// TODO figure out a way to use the back panel
 }
 
 void Cursor_SetPosition(int x, int y) { } // Makes no sense for PS Vita
@@ -140,6 +141,23 @@ void Window_DisableRawMouse(void) { Input.RawMode = false; }
 /*########################################################################################################################*
 *-------------------------------------------------------Gamepads----------------------------------------------------------*
 *#########################################################################################################################*/
+static const BindMapping vita_padbinds[BIND_COUNT] = {
+	[BIND_JUMP]      = { CCPAD_1 },     
+	[BIND_SET_SPAWN] = { CCPAD_START }, 
+	[BIND_CHAT]      = { CCPAD_4 },
+	[BIND_INVENTORY] = { CCPAD_3 },
+	[BIND_SEND_CHAT] = { CCPAD_START },
+	[BIND_SPEED]     = { CCPAD_2, CCPAD_L },
+	[BIND_NOCLIP]    = { CCPAD_2, CCPAD_3 },
+	[BIND_FLY]       = { CCPAD_2, CCPAD_R },
+	[BIND_PLACE_BLOCK]  = { CCPAD_L },
+	[BIND_DELETE_BLOCK] = { CCPAD_R },
+	[BIND_FLY_UP]       = { CCPAD_UP },  
+	[BIND_FLY_DOWN]     = { CCPAD_DOWN },
+	[BIND_HOTBAR_LEFT]  = { CCPAD_LEFT },  
+	[BIND_HOTBAR_RIGHT] = { CCPAD_RIGHT },
+	
+};
 static cc_bool circle_main;
 
 void Gamepads_Init(void) {
@@ -189,7 +207,7 @@ static void ProcessCircleInput(int port, int axis, int x, int y, float delta) {
 }
 
 static void ProcessPadInput(float delta) {
-	int port = Gamepad_Connect(0x503, PadBind_Defaults);
+	int port = Gamepad_Connect(0x503, vita_padbinds);
 	SceCtrlData pad;
 	
 	// sceCtrlReadBufferPositive is blocking (seems to block until vblank), and don't want that

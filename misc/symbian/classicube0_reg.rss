@@ -1,0 +1,17 @@
+#include <appinfo.rh>
+#include <classicube0.rsg>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0xE212A5C2
+
+RESOURCE APP_REGISTRATION_INFO
+{
+	app_file="ClassiCube0";
+
+	localisable_resource_file="\\resource\\apps\\classicube0";
+	localisable_resource_id=R_CLASSICUBE0_LOCALISABLE_APP_INFO;
+
+	embeddability=KAppNotEmbeddable;
+	newfile=KAppDoesNotSupportNewFile;
+}
+

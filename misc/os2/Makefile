@@ -1,10 +1,10 @@
-TARGET		:=	ClassiCube
+TARGET		:=	ClassiCube0
 BUILD_DIR 	:=	build/os2
 SOURCE_DIR	:=	src
 
 C_SOURCES   := $(wildcard $(SOURCE_DIR)/*.c)
 C_OBJECTS   := $(patsubst $(SOURCE_DIR)/%.c, $(BUILD_DIR)/%.o, $(C_SOURCES))
-OBJECTS 	:= $(C_OBJECTS) $(BUILD_DIR)/$(TARGET).res misc/os2/classicube.def
+OBJECTS 	:= $(C_OBJECTS) $(BUILD_DIR)/$(TARGET).res misc/os2/classicube0.def
 
 #---------------------------------------------------------------------------------
 # options for code generation

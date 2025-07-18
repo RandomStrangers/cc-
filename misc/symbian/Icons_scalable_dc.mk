@@ -5,7 +5,7 @@ ZDIR=$(EPOCROOT)epoc32\data\z
 endif
 
 TARGETDIR=$(ZDIR)\resource\apps
-ICONTARGETFILENAME=$(TARGETDIR)\classicube_icon.mif
+ICONTARGETFILENAME=$(TARGETDIR)\classicube0_icon.mif
 
 ICONDIR=.
 
@@ -32,9 +32,9 @@ CLEANLIB : do_nothing
 
 RESOURCE : $(ICONTARGETFILENAME)
 
-$(ICONTARGETFILENAME) : $(ICONDIR)\qgn_menu_classicube.svg
+$(ICONTARGETFILENAME) : $(ICONDIR)\qgn_menu_classicube0.svg
 	mifconv $(ICONTARGETFILENAME) \
-		/c32 $(ICONDIR)\qgn_menu_classicube.svg
+		/c32 $(ICONDIR)\qgn_menu_classicube0.svg
 
 FREEZE : do_nothing
 

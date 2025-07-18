@@ -27,7 +27,7 @@ export AR       := xenon-ar
 # SOURCES is a list of directories containing source code
 # INCLUDES is a list of directories containing extra header files
 #---------------------------------------------------------------------------------
-TARGET		:=	ClassiCube-xbox360
+TARGET		:=	ClassiCube0-xbox360
 BUILD		:=	build-360
 SOURCES		:=	src third_party/bearssl/src
 

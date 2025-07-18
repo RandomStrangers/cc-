@@ -13,8 +13,8 @@ TOPDIR ?= $(CURDIR)
 # APP_SHORTNAME sets the short name of the application
 # APP_AUTHOR sets the author of the application
 #-------------------------------------------------------------------------------
-APP_NAME		:= ClassiCube
-APP_SHORTNAME	:= ClassiCube
+APP_NAME		:= ClassiCube0
+APP_SHORTNAME	:= ClassiCube0
 APP_AUTHOR		:= ClassiCube team
 
 include $(DEVKITPRO)/wut/share/wut_rules
@@ -30,7 +30,7 @@ include $(DEVKITPRO)/wut/share/wut_rules
 # TV_SPLASH is the image displayed during bootup on the TV, leave blank to use default rule
 # DRC_SPLASH is the image displayed during bootup on the DRC, leave blank to use default rule
 #-------------------------------------------------------------------------------
-TARGET		:=	ClassiCube-wiiu
+TARGET		:=	ClassiCube0-wiiu
 BUILD		:=	build-wiiu
 SOURCES		:=	src third_party/bearssl/src
 SHADERS		:=	misc/wiiu

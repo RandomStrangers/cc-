@@ -95,7 +95,7 @@ void Process_Abort2(cc_result result, const char* raw_msg) {
 /*########################################################################################################################*
 *-----------------------------------------------------Directory/File------------------------------------------------------*
 *#########################################################################################################################*/
-static cc_string root_path = String_FromConst("E:\\ClassiCube\\");
+static cc_string root_path = String_FromConst("E:\\ClassiCube0\\");
 static BOOL hdd_mounted;
 
 void Platform_EncodePath(cc_filepath* dst, const cc_string* path) {

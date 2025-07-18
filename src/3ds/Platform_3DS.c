@@ -101,7 +101,7 @@ void Process_Abort2(cc_result result, const char* raw_msg) {
 /*########################################################################################################################*
 *-----------------------------------------------------Directory/File------------------------------------------------------*
 *#########################################################################################################################*/
-static const cc_string root_path = String_FromConst("sdmc:/3ds/ClassiCube/");
+static const cc_string root_path = String_FromConst("sdmc:/3ds/ClassiCube0/");
 
 void Platform_EncodePath(cc_filepath* dst, const cc_string* path) {
 	char* str = dst->buffer;
@@ -413,7 +413,7 @@ void Platform_Init(void) {
 	
 	// create root directories (no permissions anyways)
 	CreateRootDirectory("sdmc:/3ds");
-	CreateRootDirectory("sdmc:/3ds/ClassiCube");
+	CreateRootDirectory("sdmc:/3ds/ClassiCube0");
 	
 	// See https://github.com/devkitPro/libctru/blob/master/libctru/include/3ds/services/soc.h
 	//  * @param context_addr Address of a page-aligned (0x1000) buffer to be used.

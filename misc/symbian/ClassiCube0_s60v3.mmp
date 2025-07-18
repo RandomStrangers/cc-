@@ -1,0 +1,7 @@
+TARGET		  ClassiCube0_s60v3.exe
+
+ARMFPU softvfp
+
+LIBRARY libgles_cm.lib
+
+#include "ClassiCube0.mmh"

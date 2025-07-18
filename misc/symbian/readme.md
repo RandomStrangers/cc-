@@ -7,7 +7,7 @@ Compiling with Carbide C++
 - Go to project properties, Carbide.c++>Build Configurations, select correct configuration
 (e.g: `Phone Release (armv5_urel_gcce) [Nokia_Symbian3_SDK_v1.0]`).
 - In SIS Builder tab, click Add.
-- In PKG File drop down list, select `misc\symbian\ClassiCube.pkg`.
+- In PKG File drop down list, select `misc\symbian\ClassiCube0.pkg`.
 - Check `Don't sign sis file`, click OK.
 - Apply and close properties.
 - Project > Build

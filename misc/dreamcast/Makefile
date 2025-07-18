@@ -11,28 +11,31 @@ endif
 # Directory where object files are placed
 BUILD_DIR	:= build/dc
 # List of directories containing source code
-SOURCE_DIRS	:= src third_party/bearssl/src misc/dreamcast
+SOURCE_DIRS	:= src third_party/bearssl src/dreamcast
 # Name of the final output
-TARGET 		:= ClassiCube-dc
-# Additional libraries to link against
-LIBS		= -lm -lppp -lkosfat
-# List of directories containing more header files
-INCLUDES	= -Ithird_party/bearssl/inc
+TARGET 		:= ClassiCube0-dc
 
 
 #---------------------------------------------------------------------------------
-# Code generation
+# Compilable files
 #---------------------------------------------------------------------------------
 S_FILES := $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/*.S))
 C_FILES := $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/*.c))
 OBJS 	:= $(addprefix $(BUILD_DIR)/, $(notdir $(C_FILES:%.c=%.o) $(S_FILES:%.S=%.o)))
-CFLAGS	:= -g -DNDEBUG -O3 -fipa-pta -fno-pie -flto=auto -fomit-frame-pointer -fbuiltin -ffast-math -ffp-contract=fast -mfsrra -mfsca -pipe -fno-math-errno
-LDFLAGS	= -g
 
 # Dependency tracking
 DEPFLAGS = -MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
 DEPFILES := $(OBJS:%.o=%.d)
 
+
+#---------------------------------------------------------------------------------
+# Code generation
+#---------------------------------------------------------------------------------
+CFLAGS	= -g -DNDEBUG -O3 -fipa-pta -fno-pie -flto=auto -fomit-frame-pointer -fbuiltin -ffast-math -ffp-contract=fast -mfsrra -mfsca -pipe -fno-math-errno
+LDFLAGS	= -g
+
+# Additional libraries to link against
+LIBS		= -lm -lppp -lkosfat
 
 #---------------------------------------------------------------------------------
 # Main targets
@@ -66,7 +69,7 @@ $(TARGET).iso: $(TARGET)-scr.bin
 	mkdir -p ISO_FILES/maps
 	mkdir -p ISO_FILES/texpacks
 	mkdir -p ISO_FILES/texturecache
-	cp misc/dreamcast/classicube.zip ISO_FILES/texpacks/default.zip
+	cp misc/dreamcast/classicube0.zip ISO_FILES/texpacks/default.zip
 	cp misc/dreamcast/IP.BIN IP.BIN
 	mkisofs -G IP.BIN -C 0,11702 -J -l -r -quiet -o $(TARGET).iso ISO_FILES
 # genisoimage -V ClassiCube -G IP.BIN -joliet -rock -l -o $(TARGET).iso ISO_FILES
@@ -79,12 +82,15 @@ $(TARGET).cdi: $(TARGET).iso
 # Object generation
 #---------------------------------------------------------------------------------
 $(BUILD_DIR)/%.o: src/%.c
-	kos-cc $(CFLAGS) $(INCLUDES) $(DEPFLAGS) -c $< -o $@
+	kos-cc $(CFLAGS) $(DEPFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: third_party/bearssl/src/%.c
-	kos-cc $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(BUILD_DIR)/%.o: src/dreamcast/%.c
+	kos-cc $(CFLAGS) $(DEPFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: misc/dreamcast/%.S
+$(BUILD_DIR)/%.o: third_party/bearssl/%.c
+	kos-cc $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: src/dreamcast/%.S
 	kos-cc $(DEPFLAGS) -c $< -o $@
 
 

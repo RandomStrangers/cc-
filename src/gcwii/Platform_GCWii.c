@@ -583,7 +583,7 @@ static void FindRootDirectory(void) {
 	
 	root_path.length = 0;
 	AppendDevice(&root_path, cwd);
-	String_AppendConst(&root_path, ":/ClassiCube");
+	String_AppendConst(&root_path, ":/ClassiCube0");
 }
 
 static void CreateRootDirectory(void) {

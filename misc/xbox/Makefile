@@ -6,9 +6,9 @@ endif
 # Configurable options
 #---------------------------------------------------------------------------------
 # Name of the final output
-TARGET		= ClassiCube-xbox
+TARGET		= ClassiCube0-xbox
 # Application name/title
-XBE_TITLE 	= ClassiCube
+XBE_TITLE 	= ClassiCube0
 # List of directories containing source code
 SOURCE_DIRS = src src/xbox third_party/bearssl/src
 # Shader objects

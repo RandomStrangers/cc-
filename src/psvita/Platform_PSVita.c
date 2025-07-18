@@ -79,7 +79,7 @@ void Process_Abort2(cc_result result, const char* raw_msg) {
 /*########################################################################################################################*
 *-----------------------------------------------------Directory/File------------------------------------------------------*
 *#########################################################################################################################*/
-static const cc_string root_path = String_FromConst("ux0:data/ClassiCube/");
+static const cc_string root_path = String_FromConst("ux0:data/ClassiCube0/");
 
 void Platform_EncodePath(cc_filepath* dst, const cc_string* path) {
 	char* str = dst->buffer;

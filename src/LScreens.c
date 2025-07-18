@@ -1013,7 +1013,7 @@ void MainScreen_SetActive(void) {
 	s->Activated     = MainScreen_Activated;
 	s->LoadState     = MainScreen_Load;
 	s->Tick          = MainScreen_Tick;
-	s->title         = "ClassiCube";
+	s->title         = "ClassiCube0";
 
 #ifdef CC_BUILD_NETWORKING
 	s->onEnterWidget = (struct LWidget*)&s->btnLogin;
@@ -1452,7 +1452,7 @@ static void SettingsScreen_DPIScaling(struct LCheckbox* w) {
 #if defined CC_BUILD_WIN
 	DisplayInfo.DPIScaling = w->value;
 	Options_SetBool(OPT_DPI_SCALING, w->value);
-	Window_ShowDialog("Restart required", "You must restart ClassiCube before display scaling takes effect");
+	Window_ShowDialog("Restart required", "You must restart ClassiCube0 before display scaling takes effect");
 #else
 	Window_ShowDialog("Restart required", "Display scaling is currently only supported on Windows");
 #endif
@@ -1737,7 +1737,7 @@ static void UpdatesScreen_FetchTick(struct UpdatesScreen* s) {
 
 	if (!FetchUpdateTask.Base.success) return;
 	/* FetchUpdateTask handles saving the updated file for us */
-	Launcher_ShouldExit   = true;
+	Launcher_ShouldStop   = true;
 	Launcher_ShouldUpdate = true;
 }
 

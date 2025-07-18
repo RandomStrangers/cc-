@@ -2,23 +2,23 @@ ifeq ($(strip $(DEVKITPRO)),)
 $(error "Please set DEVKITPRO in your environment. export DEVKITPRO=<path to>devkitPro)
 endif
 
+.SUFFIXES:
+
 
 #---------------------------------------------------------------------------------
 # Configurable options
 #---------------------------------------------------------------------------------
 # Name of the final output
-TARGET 		= ClassiCube-3ds
+TARGET 		= ClassiCube0-3ds
 # List of directories containing source code
-SOURCE_DIRS	= src src/3ds third_party/bearssl/src
+SOURCE_DIRS	= src src/3ds third_party/bearssl
 # List of directories containing shader files
 SHDR_DIRS   = misc/3ds
-# List of directories containing more header files
-INCLUDES	= -Ithird_party/bearssl/inc
 # Directory where object files are placed
 BUILD_DIR	= build/3ds
 
 APP_ICON	= misc/3ds/icon.png
-APP_TITLE 	= ClassiCube
+APP_TITLE 	= ClassiCube0
 APP_DESCRIPTION = Simple block building sandbox
 APP_AUTHOR 	= ClassiCube team
 
@@ -28,7 +28,7 @@ CIA_SPEC_RSF	= misc/3ds/spec.rsf
 
 
 #---------------------------------------------------------------------------------
-# Code generation
+# Compilable files
 #---------------------------------------------------------------------------------
 S_FILES = $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/*.S))
 C_FILES = $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/*.c))
@@ -37,20 +37,25 @@ OBJS 	= $(addprefix $(BUILD_DIR)/, $(notdir $(C_FILES:%.c=%.o) $(S_FILES:%.S=%.o
 PICAFILES 	:= $(foreach dir,$(SHDR_DIRS),$(notdir $(wildcard $(dir)/*.v.pica)))
 OBJS		+= $(addprefix $(BUILD_DIR)/, $(PICAFILES:.v.pica=.shbin.o))
 
+# Dependency tracking
+DEPFLAGS = -MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
+DEPFILES := $(OBJS:%.o=%.d)
+
+
+#---------------------------------------------------------------------------------
+# Code generation
+#---------------------------------------------------------------------------------
 ARCH	= -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 CFLAGS	= -g -Wall -O2 -mword-relocations -ffunction-sections $(ARCH) $(INCLUDE) -D__3DS__
 ASFLAGS	= -g $(ARCH)
 
 LDFLAGS	= -specs=3dsx.specs -g $(ARCH)
 LIBS	= -lctru -lm
+INCLUDES= 
 
 CTRULIB		= $(DEVKITPRO)/libctru
 INCLUDES 	+= $(foreach dir, $(CTRULIB), -I$(dir)/include)
-LDFLAGS 	+= $(foreach dir, $(CTRULIB), -L$(dir)/lib)
-
-# Dependency tracking
-DEPFLAGS = -MT $@ -MMD -MP -MF $(BUILD_DIR)/$*.d
-DEPFILES := $(OBJS:%.o=%.d)
+LDFLAGS 	+= $(foreach dir,$(CTRULIB), -L$(dir)/lib)
 
 
 #---------------------------------------------------------------------------------
@@ -109,7 +114,7 @@ $(BUILD_DIR)/%.o: src/%.c
 $(BUILD_DIR)/%.o: src/3ds/%.c
 	$(ARM_CC) $(CFLAGS) $(INCLUDES) $(DEPFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/%.o: third_party/bearssl/src/%.c
+$(BUILD_DIR)/%.o: third_party/bearssl/%.c
 	$(ARM_CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(BUILD_DIR)/%.shbin: misc/3ds/%.v.pica
